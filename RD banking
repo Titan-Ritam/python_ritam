@@ -1,0 +1,121 @@
+print("Welcome to RAMPRASAD  BANK")
+payment_list = {1 :"Monthly", 2 :"Half yearly", 3 :"Yearly"}
+print("Select Payment type:")
+def getdate():
+    import datetime
+    return datetime.datetime.now()
+try:
+    for key, value in payment_list.items():
+        print("Press", key, "for", value, "\n", end="")
+    payment_type = int(input())
+    print("For calculating your mature amount press 1")
+    print("For deposit now press 2")
+    print("for Retrieve your deposit press 3")
+    d = int(input())
+    if d == 1:
+        print("Selected payment type : ", payment_list[payment_type], "\n", end="")
+        print("Enter your Invesment Time in year")
+        inves_time = int(input())
+        inves2 = inves_time * 2
+        invest = inves_time * 12
+        print("Please enter your Monthly,Half yearly or yearly amount")
+        amount = int(input())
+        woi = invest * amount
+        woiy=inves_time*amount
+        if payment_list[payment_type] == "Monthly":
+            print("Your with interest amount: ", woi + (amount / 100 * 14) * invest)
+            print("Your only interest amount: ", (amount / 100 * 14) * invest)
+            print("Your without interest amount: ", woi)
+        elif payment_list[payment_type] == "Half yearly":
+            print("Your with interest amount: ", woi + (amount / 100 * 12) * inves2)
+            print("Your only interest amount: ", (amount / 100 * 12) * inves2)
+            print("Your without interest amount: ", woi)
+        elif payment_list[payment_type] == "Yearly":
+            print("Your with interest amount: ", woiy + (woiy / 100 * 10))
+            print("Your only interest amount: ", (woiy / 100 * 10))
+            print("Your without interest amount: ", woiy)
+        else:
+            print("Wrong Input!!")
+
+    elif d==2:
+        print("Press 1 for Invesment  now")
+        print("Press 2 for not interested")
+        op = int(input())
+
+        if op == 1:
+            print(f"Enter your name and {payment_list[payment_type]} invesment")
+            c_name = input("Enter name: ")
+            cp_name=c_name.capitalize()
+            if payment_list[payment_type] == "Monthly":
+                # print("Deposit your money")
+                # f_pay = int(input("Enter amount: "))
+                f = open(cp_name + "_" + payment_list[payment_type] + ".txt", "a")
+                k = 'y'
+                while (k != "n"):
+                    print("Enter", payment_list[payment_type],"amount", "\n", end="")
+                    p_amount = input()
+                    f.write("[ " + str(getdate()) + " ] : " + p_amount + "\n")
+                    print("You successfully deposited",p_amount,"rupees")
+                    k = input("Are you deposit MORE ? y/n:")
+                    continue
+                f.close()
+            elif payment_list[payment_type] == "Half yearly":
+                print("Deposit your money")
+                f_pay = int(input("Enter amount: "))
+                f = open(cp_name + "_" + payment_list[payment_type] + ".txt", "a")
+                k = 'y'
+                while (k != "n"):
+                    print("Enter", payment_list[payment_type], "\n", end="")
+                    p_amount = input()
+                    f.write("[ " + str(getdate()) + " ] : " + p_amount + "\n")
+                    k = input("Are you deposit MORE ? y/n:")
+                    continue
+                f.close()
+            elif payment_list[payment_type] == "Yearly":
+                print("Deposit your money")
+                f_pay = int(input("Enter amount: "))
+                f = open(cp_name + "_" + payment_list[payment_type] + ".txt", "a")
+                k = 'y'
+                while (k != "n"):
+                    print("Enter", payment_list[payment_type], "\n", end="")
+                    p_amount = input()
+                    f.write("[ " + str(getdate()) + " ] : " + p_amount + "\n")
+                    k = input("Are you deposit MORE ? y/n:")
+                    continue
+                f.close()
+            else:
+                print("INVALID INPUT")
+        elif op==2:
+            print("Thank you for choosing NEY KAJ KHOY BHAJ BANK")
+        else:
+            print("WRONG INPUT!!")
+    elif d==3:
+            print("enter your name")
+            name=input()
+            cname=name.capitalize()
+            try:
+                print(cname, "payment type-", payment_list[payment_type], "Report :", "\n", end="")
+                f = open(cname + "_" + payment_list[payment_type] + ".txt", "rt")
+                contents = f.readlines()
+                for line in contents:
+                   print(line, end="")
+                f.close()
+            except Exception as e:
+               print("mr.",cname,"You dont have an account !!!")
+               print("please at first deposit some money")
+    else:
+           print("WRONG INPUT!!")
+except Exception as e:
+    print("wrong input")
+
+
+
+
+
+
+
+
+
+
+
+
