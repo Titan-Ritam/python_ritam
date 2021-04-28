@@ -1,4 +1,4 @@
-print("Welcome to RAMPRASAD  BANK")
+print("Welcome to NEY KAJ KHOY BHAJ  BANK")
 payment_list = {1 :"Monthly", 2 :"Half yearly", 3 :"Yearly"}
 print("Select Payment type:")
 def getdate():
